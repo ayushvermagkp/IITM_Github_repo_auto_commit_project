@@ -413,12 +413,9 @@ def debug():
     return jsonify(config), 200
 
 if __name__ == '__main__':
-    port = int(os.getenv('PORT', 5000))
+    port = int(os.environ.get('PORT', 10000))  # Render uses port 10000
     print(f"\n" + "="*60)
-    print(f"🌍 LLM Deployment API v2.1")
+    print(f"🌍 LLM Deployment API - Render Deployment")
     print(f"="*60)
-    print(f"🔗 Health check: http://localhost:{port}/health")
-    print(f"🔗 Debug info: http://localhost:{port}/debug")
-    print(f"🔗 Deploy endpoint: http://localhost:{port}/api/deploy")
-    print(f"="*60)
+    print(f"🔗 Starting on port: {port}")
     app.run(host='0.0.0.0', port=port, debug=False)
